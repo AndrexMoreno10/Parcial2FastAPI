@@ -46,10 +46,10 @@ cd Parcial2FastAPI
 ### Configuración
 
 1. Crea un archivo .env en la raíz del proyecto y define las siguientes variables:
-    DB_HOST=mysql
-    DB_USER=root
-    DB_PASSWORD=rootpassword
-    DB_NAME=gestionusuarios
+   - DB_HOST=mysql
+   - DB_USER=root
+   - DB_PASSWORD=rootpassword
+   - DB_NAME=gestionusuarios
 
 
 2. Crea y activa un entorno virtual (opcional pero recomendado):
