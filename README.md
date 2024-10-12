@@ -76,12 +76,17 @@ Este comando construirá la imagen de la aplicación FastAPI y MySQL, y los leva
 ```
 
 2. Aplica las migraciones a la base de datos:
+```bash
     docker-compose exec fastapi python -m app.migrations
-
-3. Accede a la aplicación en tu navegador:
+```
+4. Accede a la aplicación en tu navegador:
+```bash
 http://localhost:8000
-La documentación de la API estará disponible en http://localhost:8000/docs.
-
+```
+La documentación de la API estará disponible en:
+```bash
+http://localhost:8000/docs.
+```
 
 ### Análisis de calidad de código
 Ejecutar migraciones de la base de datos
