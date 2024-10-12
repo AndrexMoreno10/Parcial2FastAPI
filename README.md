@@ -95,9 +95,9 @@ El proyecto utiliza peewee_migrate para gestionar las migraciones. Puedes aplica
     docker-compose exec fastapi python -m app.migrations
 ```
     
-### Análisis de calidad de código
+## Análisis de calidad de código
 
-## Configuracion PYLINT 
+###  Configuracion PYLINT 
 El proyecto utiliza Pylint para verificar la calidad del código. A continuación se muestran los pasos para ejecutarlo:
 
 
