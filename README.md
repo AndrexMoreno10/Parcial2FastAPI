@@ -19,8 +19,8 @@ Asegúrate de tener instaladas las siguientes herramientas en tu máquina:
 Primero, clona este repositorio en tu máquina local:
 
 ```bash
-   git clone https://github.com/AndrexMoreno10/Parcial2FastAPI
-   cd Parcial2FastAPI
+git clone https://github.com/AndrexMoreno10/Parcial2FastAPI
+cd Parcial2FastAPI
 ```
 
 
@@ -72,11 +72,11 @@ pip install -r requirements.txt
 
 Este comando construirá la imagen de la aplicación FastAPI y MySQL, y los levantará como contenedores:
 ```bash
-    docker-compose up --build
+docker-compose up --build
 ```
 2. Aplica las migraciones a la base de datos:
 ```bash
-    docker-compose exec fastapi python -m app.migrations
+docker-compose exec fastapi python -m app.migrations
 ```
 4. Accede a la aplicación en tu navegador:
 ```bash
@@ -92,7 +92,7 @@ http://localhost:8000/docs.
 Ejecutar migraciones de la base de datos
 El proyecto utiliza peewee_migrate para gestionar las migraciones. Puedes aplicar las migraciones ejecutando el siguiente comando dentro del contenedor FastAPI:
 ```bash
-    docker-compose exec fastapi python -m app.migrations
+docker-compose exec fastapi python -m app.migrations
 ```
     
 ## Análisis de calidad de código
