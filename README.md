@@ -42,43 +42,31 @@ Primero, clona este repositorio en tu máquina local:
 - requirements.txt: Dependencias del proyecto.
 - MySQL/: Carpeta que contiene datos relacionados con la base de datos MySQL.
 
-## Instalación y Ejecución
-
-### Requisitos
-
-Antes de comenzar, asegúrate de tener lo siguiente instalado en tu máquina:
-
-- Docker y Docker Compose instalados.
-- Python 3.12 instalado.
 
 ### Configuración
 
-1. Clona el repositorio:
-   git clone <URL-del-repositorio>
-   cd <nombre-del-repositorio>
-
-2. Crea un archivo .env en la raíz del proyecto y define las siguientes variables:
+1. Crea un archivo .env en la raíz del proyecto y define las siguientes variables:
     DB_HOST=mysql
     DB_USER=root
     DB_PASSWORD=rootpassword
     DB_NAME=gestionusuarios
 
 
-3. Crea y activa un entorno virtual (opcional pero recomendado):
+2. Crea y activa un entorno virtual (opcional pero recomendado):
 ```bash
 python3 -m venv venv
 source venv/bin/activate  # En Linux/macOS
 .\venv\Scripts\activate  # En Windows
 ```
-4. Instala las dependencias del proyecto:
+3. Instala las dependencias del proyecto:
 ```bash
 pip install -r requirements.txt
 ```
-5. Configura las variables de entorno necesarias.
-6. Inicia la aplicación.
+4. Configura las variables de entorno necesarias.
+5. Inicia la aplicación.
 
 
-## Instrucciones de Ejecución
+## Instrucciones de Ejecución con Docker
 
 1. Construimos los contenedores Docker: 
 
@@ -98,8 +86,9 @@ La documentación de la API estará disponible en http://localhost:8000/docs.
 ### Análisis de calidad de código
 Ejecutar migraciones de la base de datos
 El proyecto utiliza peewee_migrate para gestionar las migraciones. Puedes aplicar las migraciones ejecutando el siguiente comando dentro del contenedor FastAPI:
+```bash
     docker-compose exec fastapi python -m app.migrations
-
+´´´
     
 ### Análisis de calidad de código
 
