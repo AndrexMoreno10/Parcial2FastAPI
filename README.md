@@ -19,8 +19,8 @@ Asegúrate de tener instaladas las siguientes herramientas en tu máquina:
 Primero, clona este repositorio en tu máquina local:
 
 ```bash
-git clone https://github.com/AlejandraPardo9235/ImplementacionPylintBlack.git
-cd ImplementacionPylintBlack/FastApi
+   git clone https://github.com/AndrexMoreno10/Parcial2FastAPI
+   cd Parcial2FastAPI
 ```
 
 
