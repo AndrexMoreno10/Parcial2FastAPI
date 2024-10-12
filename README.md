@@ -74,7 +74,6 @@ Este comando construirá la imagen de la aplicación FastAPI y MySQL, y los leva
 ```bash
     docker-compose up --build
 ```
-
 2. Aplica las migraciones a la base de datos:
 ```bash
     docker-compose exec fastapi python -m app.migrations
@@ -83,17 +82,18 @@ Este comando construirá la imagen de la aplicación FastAPI y MySQL, y los leva
 ```bash
 http://localhost:8000
 ```
-La documentación de la API estará disponible en:
+5. La documentación de la API estará disponible en:
 ```bash
 http://localhost:8000/docs.
 ```
 
 ### Análisis de calidad de código
+
 Ejecutar migraciones de la base de datos
 El proyecto utiliza peewee_migrate para gestionar las migraciones. Puedes aplicar las migraciones ejecutando el siguiente comando dentro del contenedor FastAPI:
 ```bash
     docker-compose exec fastapi python -m app.migrations
-´´´
+```
     
 ### Análisis de calidad de código
 
