@@ -8,7 +8,7 @@ load_dotenv()
 
 # Configuración de la base de datos MySQL utilizando las variables de entorno
 database = MySQLDatabase(
-    os.getenv("MYSQL_DATABASE", "gestionusuarios"),  # Nombre de la base de datos
+    os.getenv("MYSQL_DATABASE", "recetasmicros"),  # Nombre de la base de datos
     user=os.getenv("MYSQL_USER", "root"),            # Usuario de MySQL
     password=os.getenv("MYSQL_PASSWORD", "root"),    # Contraseña de MySQL
     host=os.getenv("MYSQL_HOST", "localhost"),       # Host de MySQL

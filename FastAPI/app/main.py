@@ -33,7 +33,7 @@ async def manage_lifespan(_app: FastAPI):
     """
     connect_db()  # Conectar la base de datos
     try:
-        create_tables([Usuario, CategoriaAlimento, CategoriaReceta, Despensa, Grupo,
+        create_tables([Usuario, receta , notificacion, menusurec CategoriaAlimento, CategoriaReceta, Despensa, Grupo,
                        ItemLista, ListaCompra, Menu, MenuReceta, Notificacion, Receta, UsuarioGrupo])  # Crear las tablas
         yield
     except Exception as e:
@@ -45,9 +45,9 @@ app = FastAPI(
     title="Gestión de Usuarios",
     version="1.0",
     contact={
-        "name": "Julian Andres Arango",
-        "url": "https://github.com/Julian-Aa",
-        "email": "julian.arango.re@gmail.com",
+        "name": "Andres Moreno y Michell Pardo",
+        "url": "https://github.com/AndrexMoreno10",
+        "email": "adp2333@gmail.com",
     },
     lifespan=manage_lifespan
 )
