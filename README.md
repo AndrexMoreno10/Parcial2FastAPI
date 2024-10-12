@@ -83,7 +83,7 @@ pip install -r requirements.txt
 1. Construimos los contenedores Docker: 
 
 Este comando construirá la imagen de la aplicación FastAPI y MySQL, y los levantará como contenedores:
-´´´
+```bash
     docker-compose up --build
 ´´´
 
@@ -91,10 +91,9 @@ Este comando construirá la imagen de la aplicación FastAPI y MySQL, y los leva
     docker-compose exec fastapi python -m app.migrations
 
 3. Accede a la aplicación en tu navegador:
-´´´ 
 http://localhost:8000
 La documentación de la API estará disponible en http://localhost:8000/docs.
-´´´
+
 
 ### Análisis de calidad de código
 Ejecutar migraciones de la base de datos
