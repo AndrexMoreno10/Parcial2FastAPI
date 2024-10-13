@@ -1,7 +1,7 @@
 FROM mysql:8.0
 
 ENV MYSQL_ROOT_PASSWORD root
-ENV MYSQL_DATABASE recipe_master
+ENV MYSQL_DATABASE gestionusuarios
 ENV MYSQL_USER eam-user
 ENV MYSQL_PASSWORD root
 
