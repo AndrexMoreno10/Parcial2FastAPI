@@ -1,18 +1,14 @@
-from peewee import Model, CharField, DateTimeField, ForeignKeyField, AutoField
-from database import database
-from .usuario import Usuario
-from datetime import datetime
+"""
+This module contains the Menu model for representing menu data.
+"""
 
-class Menu(Model):
-    id_menu = AutoField()
-    id_usuario = ForeignKeyField(Usuario, backref='menus', on_delete='CASCADE', null=True)
-    nombre = CharField(max_length=255, null=True)
-    
-    # Usando DateTimeField para manejar fechas y horas
-    fecha_inicio = DateTimeField(default=datetime.now, null=True)
-    fecha_fin = DateTimeField(null=True)
-    recurrencia = CharField(max_length=50, null=True)
+from pydantic import BaseModel
 
-    class Meta:
-        database = database
-        table_name = 'menus'
+class Menu(BaseModel):
+    """
+    Menu model representing a menu with an id, name, date, and user_id.
+    """
+    id: int
+    name: str
+    date: str
+    user_id: int

@@ -1,65 +1,47 @@
 """
-Main module for FastAPI application setup.
+Main FastAPI application with database connection handling.
 
-This module sets up the FastAPI application, manages the database connection
-lifecycle, and includes routes for user management.
+This module initializes the FastAPI application and sets up the database
+connection management using an asynchronous lifespan function. It also
+redirects the root path to the API documentation.
 """
 
 from contextlib import asynccontextmanager
+from config.database import database as connection
+from routes import role_routes
+from routes import user_routes
 from fastapi import FastAPI
-from starlette.responses import RedirectResponse
-from database import database as connection, connect_db, close_db, create_tables
-from models.categoriaAlimento import CategoriaAlimento
-from models.categoriaReceta import CategoriaReceta
-from models.despensa import Despensa
-from models.grupo import Grupo
-from models.itemLista import ItemLista
-from models.listaCompra import ListaCompra
-from models.menu import Menu
-from models.menuReceta import MenuReceta
-from models.notificacion import Notificacion
-from models.receta import Receta
-from models.usuario import Usuario
-from models.usuarioGrupo import UsuarioGrupo
-from routes.usuario_route import router as usuario_router
+
 
 @asynccontextmanager
-async def manage_lifespan(_app: FastAPI):
+# pylint: disable=unused-argument, redefined-outer-name
+async def lifespan(app: FastAPI):
     """
-    Manage the lifespan of the FastAPI application.
+    Lifespan context manager for handling database connections.
 
-    Ensures the database connection is opened and closed properly,
-    and creates tables if they do not exist.
+    Ensures the database connection is established when the application starts
+    and closed when the application stops.
+
+    Args:
+        app (FastAPI): The FastAPI application instance.
+
+    Yields:
+        None: Control is passed to the FastAPI application execution.
     """
-    connect_db()  # Conectar la base de datos
+    # Conectar a la base de datos si la conexión está cerrada
+    if connection.is_closed():
+        connection.connect()
     try:
-        create_tables([Usuario, receta , notificacion, menusurec CategoriaAlimento, CategoriaReceta, Despensa, Grupo,
-                       ItemLista, ListaCompra, Menu, MenuReceta, Notificacion, Receta, UsuarioGrupo])  # Crear las tablas
-        yield
-    except Exception as e:
-        print(f"❌ Error al gestionar el ciclo de vida de la aplicación: {e}")
+        yield  # Aquí es donde se ejecutará la aplicación
     finally:
-        close_db()  # Cerrar la conexión a la base de datos
+        # Cerrar la conexión cuando la aplicación se detenga
+        if not connection.is_closed():
+            connection.close()
 
-app = FastAPI(
-    title="Gestión de Usuarios",
-    version="1.0",
-    contact={
-        "name": "Andres Moreno y Michell Pardo",
-        "url": "https://github.com/AndrexMoreno10",
-        "email": "adp2333@gmail.com",
-    },
-    lifespan=manage_lifespan
-)
 
-@app.get("/")
-async def read_root():
-    """
-    Redirect the root path to the API documentation.
+# Crear la instancia de la aplicación FastAPI con el lifespan para gestionar
+# la conexión a la base de datos
+app = FastAPI(lifespan=lifespan)
 
-    Returns a redirection response to the documentation page.
-    """
-    return RedirectResponse(url="/docs")
-
-# Incluir las rutas de gestión de usuarios
-app.include_router(usuario_router, prefix="/usuarios", tags=["Usuarios"])
+app.include_router(role_routes.router)
+app.include_router(user_routes.router)
